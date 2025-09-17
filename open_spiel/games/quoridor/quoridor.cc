@@ -224,6 +224,10 @@ Move QuoridorState::ActionToMove(Action action_id) const {
     if (GetPlayer(target) == kPlayerNone) {
       return target;
     } else {
+        if (player_loc_[current_player_].xy == action_id) // Pass action
+        {
+            return move;
+        }
       // Jumping over a player is inferred - it has the same action ID as just
       // stepping
       return player_loc_[current_player_] + ((move - base_for_relative_) * 2);
